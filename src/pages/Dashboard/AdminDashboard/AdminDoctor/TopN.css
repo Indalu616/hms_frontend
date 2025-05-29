@@ -1,0 +1,23 @@
+.action-buttons .input-group {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.action-buttons .input-group label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #333;
+}
+.action-buttons .input-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 150px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}

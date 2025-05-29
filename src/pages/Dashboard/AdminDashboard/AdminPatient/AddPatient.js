@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import "../AdminDoctor/AdminDoctor.css";
 import axios from "axios";
 
-function AddDoctor() {
+function AddPatient() {
   const [show, setShow] = useState(false);
   const [departments, setDepartments] = useState([]);
   const handleClose = () => setShow(false);
@@ -12,19 +12,24 @@ function AddDoctor() {
   const [doctorData, setDoctorData] = useState({
     firstName: "",
     lastName: "",
+    birth_date: "",
     email: "",
     age: "",
+    gender: "",
     phone_num: "",
-    department_id: "",
+    insurance_provider: "",
+    insurance_id: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setDoctorData({ ...doctorData, [name]: value });
   };
   // Fetch departments from the server
-  const fetchDepartments = async () => {
+  const fetchInsurance = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/departments");
+      const response = await axios.get(
+        "http://localhost:5000/patients/insurance-providers"
+      );
       const data = response.data;
       setDepartments(data);
     } catch (error) {
@@ -36,7 +41,7 @@ function AddDoctor() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/doctors",
+        "http://localhost:5000/patients/create_patient",
         doctorData
       );
       console.log("Doctor added successfully:", response.data);
@@ -45,19 +50,22 @@ function AddDoctor() {
       setDoctorData({
         firstName: "",
         lastName: "",
+        birth_date: "",
         email: "",
         age: "",
+        gender: "",
         phone_num: "",
-        department: "",
+        insurance_provider: "",
+        insurance_id: "",
       });
-      alert("Doctor added successfully");
+      alert("Patient added successfully");
     } catch (error) {
       console.error("Error:", error);
-      alert("Error adding doctor");
+      alert("Error adding Patient");
     }
   };
   useEffect(() => {
-    fetchDepartments();
+    fetchInsurance();
   }, []);
   useEffect(() => {
     console.log("Doctor Data:", doctorData);
@@ -65,7 +73,7 @@ function AddDoctor() {
 
   return (
     <>
-      <Button onClick={handleShow}>Add Doctor +</Button>
+      <Button onClick={handleShow}>Add Patient +</Button>
       <Modal
         show={show}
         onHide={handleClose}
@@ -73,7 +81,7 @@ function AddDoctor() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add New Doctor</Modal.Title>
+          <Modal.Title>Add New Patient</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
@@ -102,6 +110,18 @@ function AddDoctor() {
               />
             </div>
             <div className="mb-3">
+              <label htmlFor="birth-date" className="form-label">
+                Birth Date
+              </label>
+              <input
+                type="date"
+                className="form-control"
+                id="birth-date"
+                onChange={handleInputChange}
+                name="birth_date"
+              />
+            </div>
+            <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email
               </label>
@@ -126,6 +146,21 @@ function AddDoctor() {
               />
             </div>
             <div className="mb-3">
+              <label htmlFor="department" className="form-label">
+                Gender
+              </label>
+              <select
+                className="form-select"
+                id="gender"
+                onChange={handleInputChange}
+                name="gender"
+              >
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div className="mb-3">
               <label htmlFor="phone" className="form-label">
                 Phone Number
               </label>
@@ -140,7 +175,7 @@ function AddDoctor() {
             {/* select department */}
             <div className="mb-3">
               <label htmlFor="department" className="form-label">
-                Department
+                Insurance Provider
               </label>
               <select
                 className="form-select"
@@ -148,10 +183,13 @@ function AddDoctor() {
                 onChange={handleInputChange}
                 name="department_id"
               >
-                <option value="">Select Department</option>
+                <option value="">Select Insurance</option>
                 {departments.map((department) => (
-                  <option key={department.id} value={department.dept_id}>
-                    {department.dept_name}
+                  <option
+                    key={department.insurance_id}
+                    value={department.insurance_id}
+                  >
+                    {department.insurance_name}
                   </option>
                 ))}
                 {/* Add more departments as needed */}
@@ -172,4 +210,4 @@ function AddDoctor() {
   );
 }
 
-export default AddDoctor;
+export default AddPatient;

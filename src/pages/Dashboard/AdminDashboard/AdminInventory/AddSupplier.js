@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import "../AdminDoctor/AdminDoctor.css";
 import axios from "axios";
 
-function AddDoctor() {
+function AddSupplier() {
   const [show, setShow] = useState(false);
   const [departments, setDepartments] = useState([]);
   const handleClose = () => setShow(false);
@@ -12,60 +12,47 @@ function AddDoctor() {
   const [doctorData, setDoctorData] = useState({
     firstName: "",
     lastName: "",
+    birth_date: "",
     email: "",
     age: "",
+    gender: "",
     phone_num: "",
-    department_id: "",
+    insurance_provider: "",
+    insurance_id: "",
   });
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setDoctorData({ ...doctorData, [name]: value });
-  };
-  // Fetch departments from the server
-  const fetchDepartments = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/departments");
-      const data = response.data;
-      setDepartments(data);
-    } catch (error) {
-      console.error("Error fetching departments:", error);
-    }
   };
   //handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/doctors",
+        "http://localhost:5000/medications/add-supplier",
         doctorData
       );
-      console.log("Doctor added successfully:", response.data);
+      console.log("Supplier added successfully:", response.data);
       // Optionally, you can close the modal and reset the form here
       handleClose();
       setDoctorData({
         firstName: "",
-        lastName: "",
         email: "",
-        age: "",
         phone_num: "",
-        department: "",
       });
-      alert("Doctor added successfully");
+      alert("Supplier added successfully");
     } catch (error) {
       console.error("Error:", error);
-      alert("Error adding doctor");
+      alert("Error adding Supplier");
     }
   };
-  useEffect(() => {
-    fetchDepartments();
-  }, []);
   useEffect(() => {
     console.log("Doctor Data:", doctorData);
   }, [doctorData]);
 
   return (
     <>
-      <Button onClick={handleShow}>Add Doctor +</Button>
+      <Button onClick={handleShow}>Add Supplier +</Button>
       <Modal
         show={show}
         onHide={handleClose}
@@ -73,13 +60,13 @@ function AddDoctor() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add New Doctor</Modal.Title>
+          <Modal.Title>Add New Supplier</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
             <div className="mb-3">
               <label htmlFor="firstName" className="form-label">
-                First Name
+                Supplier Name
               </label>
               <input
                 type="text"
@@ -89,18 +76,7 @@ function AddDoctor() {
                 name="firstName"
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="lastName" className="form-label">
-                Last Name
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="lastName"
-                onChange={handleInputChange}
-                name="lastName"
-              />
-            </div>
+
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email
@@ -113,18 +89,7 @@ function AddDoctor() {
                 name="email"
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="age" className="form-label">
-                Age
-              </label>
-              <input
-                type="number"
-                className="form-control"
-                id="age"
-                onChange={handleInputChange}
-                name="age"
-              />
-            </div>
+
             <div className="mb-3">
               <label htmlFor="phone" className="form-label">
                 Phone Number
@@ -136,26 +101,6 @@ function AddDoctor() {
                 onChange={handleInputChange}
                 name="phone_num"
               />
-            </div>
-            {/* select department */}
-            <div className="mb-3">
-              <label htmlFor="department" className="form-label">
-                Department
-              </label>
-              <select
-                className="form-select"
-                id="department"
-                onChange={handleInputChange}
-                name="department_id"
-              >
-                <option value="">Select Department</option>
-                {departments.map((department) => (
-                  <option key={department.id} value={department.dept_id}>
-                    {department.dept_name}
-                  </option>
-                ))}
-                {/* Add more departments as needed */}
-              </select>
             </div>
           </div>
         </Modal.Body>
@@ -172,4 +117,4 @@ function AddDoctor() {
   );
 }
 
-export default AddDoctor;
+export default AddSupplier;

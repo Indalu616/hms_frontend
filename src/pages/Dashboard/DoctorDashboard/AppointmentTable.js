@@ -60,6 +60,8 @@ export default function AppointmentTable() {
         `http://localhost:5000/doctors/my-appointments/${doc_id}`
       );
       const data = response.data;
+      console.log(data);
+      console.log(doc_id);
       const formattedData = data.map((appointment) => ({
         id: appointment.appt_id,
         firstName: appointment.patient_fname,
@@ -76,7 +78,7 @@ export default function AppointmentTable() {
   };
   React.useEffect(() => {
     fetchAppointmentData();
-  }, [searchResults,state]);
+  }, [state]);
   return (
     <div className="admin-patient">
       <Paper sx={{ height: 400, width: "100%" }}>

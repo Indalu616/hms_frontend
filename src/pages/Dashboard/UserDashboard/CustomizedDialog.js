@@ -44,10 +44,18 @@ export default function UpdateAppointment({ id }) {
         }
       );
       console.log(response.data);
+      if (response.status === 200) {
+        console.log("Appointment updated successfully");
+        alert("Appointment updated successfully");
+        // Optionally, you can refresh the appointment list or perform any other action
+        window.location.reload();
+      } else {
+        console.error("Failed to update appointment");
+        alert("Failed to update appointment");
+      }
     } catch (error) {
       console.error("Error updating appointment:", error);
     }
-    window.location.reload();
   };
   return (
     <React.Fragment>

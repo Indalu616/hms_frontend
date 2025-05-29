@@ -69,20 +69,18 @@ export default function PatientVisitTreand() {
   return (
     <div className="admin-patient">
       <div className="action-buttons">
-        <div className="search-btn">
-          <input
-            type="text"
-            placeholder="Search by Dept ID.."
-            className="search-input"
-            onChange={(e) => {
-              const searchTerm = e.target.value.toLowerCase();
-              const filteredRows = rows.filter(
-                (row) => row.id.toString().toLowerCase() === searchTerm
-              );
-              setSearchResults(filteredRows);
-            }}
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Search by Dept ID.."
+          className="search-input"
+          onChange={(e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredRows = rows.filter(
+              (row) => row.id.toString().toLowerCase() === searchTerm
+            );
+            setSearchResults(filteredRows);
+          }}
+        />
       </div>
       <Paper sx={{ height: 400, width: "100%" }}>
         <DataGrid

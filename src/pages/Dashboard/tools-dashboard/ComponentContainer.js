@@ -4,13 +4,12 @@ import AdminDashboard from "../AdminDashboard/AdminDashboard";
 import AdminPatient from "../AdminDashboard/AdminPatient/AdminPatient";
 import AdminDoctor from "../AdminDashboard/AdminDoctor/AdminDoctor";
 import AdminAppointment from "../AdminDashboard/AdminAppointment/AdminAppointment";
-import DoctorDashboard from "../DoctorDashboard/DoctorDashboard";
-import UserDashboard from "../Dashboard";
 import MyAppointment from "../DoctorDashboard/MyAppointment";
 import AdminInventory from "../AdminDashboard/AdminInventory/AdminInventory";
 import MyProfile from "../DoctorDashboard/MyProfile";
 import UserProfile from "../UserDashboard/UserDashboard";
 import MyAppointmentPatient from "../UserDashboard/MyAppointment";
+import Logout from "../Logout.js";
 
 const adminComponentList = {
   "/admin": <AdminDashboard />,
@@ -18,17 +17,17 @@ const adminComponentList = {
   "/admin-doctor": <AdminDoctor />,
   "/admin-appointment": <AdminAppointment />,
   "/admin-inventory": <AdminInventory />,
+  "/logout": <Logout />, // Placeholder for logout component
 };
 const doctorComponentList = {
   "/doctor": <MyProfile />,
   "/doctorAppointment": <MyAppointment />,
+  "/logout": <Logout />, // Placeholder for logout component
 };
 const patientComponentList = {
-  // "/my-dashboard": <MyDashboard />,
   "/patient": <UserProfile />,
   "/my-appointment": <MyAppointmentPatient />,
-  // "/medical-record": <MedicalRecord />,
-  // "/billing-interface": <BillingInterface />,
+  "/logout": <Logout />, // Placeholder for logout component
 };
 function Componentcontainer({ pathname }) {
   const { role } = useUserContext();

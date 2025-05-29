@@ -1,5 +1,4 @@
 import React from "react";
-
 import AppointmentTable from "./AppointmentTable";
 function MyAppointment() {
   return (

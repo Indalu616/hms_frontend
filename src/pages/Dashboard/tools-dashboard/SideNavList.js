@@ -4,6 +4,7 @@ import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import EventIcon from "@mui/icons-material/Event";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 function SideNavList() {
   let sideNav;
@@ -38,6 +39,12 @@ function SideNavList() {
           title: "Inventory",
           icon: <InventoryIcon />,
         },
+        {
+          segment: "logout",
+          title: "Logout",
+          icon: <LogoutIcon />,
+          isLogout: true, // Custom flag for special handling
+        },
       ];
       break;
     case "doctor":
@@ -45,6 +52,12 @@ function SideNavList() {
       sideNav = [
         { segment: "doctor", title: "Profile" },
         { segment: "doctorAppointment", title: "Appointments" },
+        {
+          segment: "logout",
+          title: "Logout",
+          icon: <LogoutIcon />,
+          isLogout: true, // Custom flag for special handling
+        },
       ];
       break;
     case "patient":
@@ -55,14 +68,28 @@ function SideNavList() {
           title: "Profile",
           icon: <AdminPanelSettingsIcon />,
         },
-        { segment: "my-appointment", title: "My Appointments", icon: <EventIcon /> },
-    
+        {
+          segment: "my-appointment",
+          title: "My Appointments",
+          icon: <EventIcon />,
+        },
+        {
+          segment: "logout",
+          title: "Logout",
+          icon: <LogoutIcon />,
+          isLogout: true, // Custom flag for special handling
+        },
       ];
       break;
     default:
       // Handle unknown roles or redirect to a default component
       sideNav = [
-        { segment: "patient", title: "Patient" },
+        {
+          segment: "logout",
+          title: "Logout",
+          icon: <LogoutIcon />,
+          isLogout: true, // Custom flag for special handling
+        },
         // { segment: "Imagegenerator", title: "Image Generator" },
       ];
   }

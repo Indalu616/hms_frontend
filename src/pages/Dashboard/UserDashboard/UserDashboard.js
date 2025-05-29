@@ -36,9 +36,6 @@ function UserProfile() {
           <p>Insurance: {insurance}</p>
         </div>
       </div>
-      <div className="my-profile-footer">
-        <button className="update-button">Update Profile</button>
-      </div>
     </div>
   );
 }

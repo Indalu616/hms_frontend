@@ -37,7 +37,6 @@ export default function AlertDialog({ id }) {
     } catch (error) {
       console.error("Error deleting appointment:", error);
     }
-    window.location.reload();
   };
 
   return (

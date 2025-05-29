@@ -4,6 +4,7 @@ import Paper from "@mui/material/Paper";
 import AlertDialog from "./AlertDialog";
 import CustomizedDialogs from "./CustomizedDialog";
 import "./AdminPatient.css";
+import AddPatient from "./AddPatient";
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "firstName", headerName: "First name", width: 130 },
@@ -61,24 +62,23 @@ export default function PatientDataTable() {
   };
   React.useEffect(() => {
     fetchPatientData();
-  }, [searchResults,state]);
+  }, [searchResults, state]);
   return (
     <div className="admin-patient">
       <div className="action-buttons">
-        <div className="search-btn">
-          <input
-            type="text"
-            placeholder="Search by ID.."
-            className="search-input"
-            onChange={(e) => {
-              const searchTerm = e.target.value.toLowerCase();
-              const filteredRows = rows.filter(
-                (row) => row.id.toString().toLowerCase() === searchTerm
-              );
-              setSearchResults(filteredRows);
-            }}
-          />
-        </div>
+        <input
+          type="text"
+          placeholder="Search by ID.."
+          className="search-input"
+          onChange={(e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredRows = rows.filter(
+              (row) => row.id.toString().toLowerCase() === searchTerm
+            );
+            setSearchResults(filteredRows);
+          }}
+        />
+        <AddPatient />
       </div>
       <Paper sx={{ height: 400, width: "100%" }}>
         <DataGrid

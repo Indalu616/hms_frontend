@@ -54,8 +54,8 @@ const paginationModel = { page: 0, pageSize: 5 };
 
 export default function AppointmentTable() {
   const [rows, setRows] = React.useState([]);
+  const [state, setState] = React.useState();
   const [patient_Id, setPat_id] = React.useState("");
-  const [searchResults, setSearchResults] = React.useState([]);
 
   // Load patient ID from local storage on first render
   React.useEffect(() => {
@@ -93,7 +93,7 @@ export default function AppointmentTable() {
     if (patient_Id) {
       fetchAppointmentData();
     }
-  }, [patient_Id]);
+  }, [patient_Id, state]);
 
   return (
     <div className="admin-patient">
@@ -103,6 +103,10 @@ export default function AppointmentTable() {
           columns={columns}
           initialState={{ pagination: { paginationModel } }}
           pageSizeOptions={[5, 10]}
+          onStateChange={(state) => {
+            console.log("State changed:", state);
+            setState(state);
+          }}
           checkboxSelection
           sx={{ border: 0 }}
         />

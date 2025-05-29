@@ -17,7 +17,9 @@ function MyProfile() {
   return (
     <div className="my-profile">
       <div className="my-profile-header">
-        <h3>Dr. {doc_fname} {doc_lname} </h3>
+        <h3>
+          Dr. {doc_fname} {doc_lname}{" "}
+        </h3>
         <p>Manage your profile information</p>
       </div>
       <div className="my-profile-content">
@@ -28,11 +30,7 @@ function MyProfile() {
           <p>Age: {age}</p>
           <p>Email: {email}</p>
           <p>Phone: {phone_num}</p>
-  
         </div>
-      </div>
-      <div className="my-profile-footer">
-        <button className="update-button">Update Profile</button>
       </div>
     </div>
   );

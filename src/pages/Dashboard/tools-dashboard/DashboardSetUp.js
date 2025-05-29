@@ -6,12 +6,9 @@ import "./Dashboard.css";
 import SideNavList from "./SideNavList";
 import { customTheme } from "./DashboardTheme";
 import ComponentContainer from "./ComponentContainer";
-import { useUserContext } from "../../../context/UserContext";
 
 function DashboardSetUp() {
   const router = useDemoRouter("/dashboard");
-  // const { user } = useUserContext();
-  // console.log(user);
   const sideNav = SideNavList();
   return (
     <AppProvider navigation={sideNav} router={router} theme={customTheme}>
