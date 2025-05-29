@@ -1,0 +1,28 @@
+.css-om7st-MuiTypography-root {
+  display: none;
+}
+.css-1d9cypr-MuiStack-root svg {
+  display: none !important ;
+}
+.css-1d9cypr-MuiStack-root::after {
+  content: "HMS";
+  display: block;
+  font-size: 1.3rem;
+  position: absolute;
+  left: 80px;
+  overflow: hidden;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+.css-gnvwx2 {
+  background-color: white !important;
+}
+.css-rizt0-MuiTypography-root {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Inter, sans-serif;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1rem;
+  color: #637381;
+}

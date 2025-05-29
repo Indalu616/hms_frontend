@@ -1,0 +1,51 @@
+.my-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 auto;
+}
+.my-profile .my-profile-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  background-color: rgb(110, 180, 110);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 2rem;
+}
+.my-profile .my-profile-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  background-color: rgb(110, 180, 110);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 2rem;
+}
+.my-profile-footer button {
+  background-color: rgb(110, 180, 110);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+}

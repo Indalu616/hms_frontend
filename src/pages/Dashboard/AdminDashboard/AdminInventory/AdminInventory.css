@@ -1,0 +1,36 @@
+.admin-inventory-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  background-color: rgb(110, 180, 110);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+}
+/* supplier whose item stayed longest */
+.supplier-whose-stayed-longest {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  background-color: rgb(110, 180, 110);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+.supplier-whose-stayed-longest .supplier-icon {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
